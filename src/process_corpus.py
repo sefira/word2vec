@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# Author: Pan Yang (panyangnlp@gmail.com)
-# Copyrigh 2017
-
 from __future__ import print_function
 
 import logging
@@ -24,13 +19,15 @@ if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("Using: python process_corpus.py xxx.csv")
         sys.exit(1)
-    inp = sys.argv[1]
-    outp = "processed_" + inp
+
+    inputfile = sys.argv[1]
+    outputfile = sys.argv[1] + ".processed"
     space = " "
     i = 0
 
-    output = open(outp, 'w')
-    sentences = LineSentence(inp)
+    output = open(outputfile, 'w')
+    sentences = LineSentence(inputfile)
+    
     for text in sentences:
         if six.PY3:
             output.write(u' '.join(text) + '\n')
@@ -41,4 +38,4 @@ if __name__ == '__main__':
             logger.info("Saved " + str(i) + " articles")
 
     output.close()
-    logger.info("Finished Saved " + str(i) + " articles")
+    logger.info("Finished Saved " + str(i) + " articles in " + outputfile)

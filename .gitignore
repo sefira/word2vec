@@ -82,3 +82,4 @@ xUnitReports
 *.bz2
 *.idea
 data/*
+model/*

@@ -24,3 +24,11 @@ This is my word2vec for douban reviews
 
  - Remove words
    - Remove words: `python remove_words.py ../data/onlyreview_douban_movie.tsv.processed.simpleCh.wordbreak`
+
+ - Train Word2Vec
+   - `python train_word2vec.py -train ../data/onlyreview_douban_movie.tsv.processed.simpleCh.wordbreak.removeword` or `python train_word2vec.py -train ../data/onlyreview_douban_movie.tsv.processed.simpleCh.wordbreak.removeword -size 300 -window 5 -sg 1 -min_count 100 -negative 10 -iter 25 -workers 12
+`
+ 
+ - Evaluate Word2Vec
+   - `python test_word2vec.py ../data/xxx.model`
+ 

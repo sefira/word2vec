@@ -1,41 +1,71 @@
-from __future__ import print_function
-
 import logging
 import os.path
-import six
 import sys
+import jieba
+import re
 
-from gensim.models.word2vec import LineSentence
+#################### config ###################
+path = "../data/"
+# data = "test_corpus.csv"
+# data = "review_douban_movie.tsv"
+# data = "review_douban_movie.tsv"
+data = "zhidao_dataneg.tsv"
+############### end of config #################
 
-def ProcessCorpus():
-    program = os.path.basename(sys.argv[0])
-    logger = logging.getLogger(program)
+logging.basicConfig(format='%(asctime)s: %(levelname)s: %(message)s')
+logging.root.setLevel(level=logging.INFO)
+logger = logging.getLogger()
 
-    logging.basicConfig(format='%(asctime)s: %(levelname)s: %(message)s')
-    logging.root.setLevel(level=logging.INFO)
-    logger.info("running %s" % ' '.join(sys.argv))
+def Tradition2Simple():
+    logger.info("running Tradition to Simple in " + path + data)
 
-    # check and process input arguments
-    if len(sys.argv) != 2:
-        print("Using: python process_corpus.py xxx.csv")
-        sys.exit(1)
+    inputfile = path + data
+    outputfile = path + data + ".zhs"
+    cmd = "opencc -i " + inputfile + " -o " + outputfile + " -c zht2zhs.ini"
+    os.system(cmd)
 
-    inputfile = sys.argv[1]
-    outputfile = sys.argv[1] + ".processed"
-    space = " "
+def WordBeark():
+    logger.info("running Word Beark in " + path + data)
+
+    inputfile = path + data + ".zhs"
+    outputfile = path + data + ".wordbreak"
     i = 0
-
     output = open(outputfile, 'w')
-    sentences = LineSentence(inputfile)
-    
-    for text in sentences:
-        if six.PY3:
-            output.write(u' '.join(text) + '\n')
-        else:
-            output.write(space.join(text) + "\n")
+    input = open(inputfile, 'r')
+
+    for line in input.readlines():
+        seg_list = jieba.cut(line)
+        output.write(u' '.join(seg_list))
+
         i = i + 1
         if (i % 10000 == 0):
-            logger.info("Saved " + str(i) + " articles")
+            logger.info("Cut " + str(i) + " articles")
 
     output.close()
     logger.info("Finished Saved " + str(i) + " articles in " + outputfile)
+
+def RemoveWord():
+    logger.info("running Remove Word in " + path + data)
+
+    inputfile = path + data + ".wordbreak"
+    outputfile = path + data + ".removeword"
+    i = 0
+    output = open(outputfile, 'w')
+    input = open(inputfile, 'r')
+
+    for line in input.readlines():
+        if(len(line) < 2):
+            continue
+        ss = re.findall('[\n\s*\r\u4e00-\u9fa5]', line)
+        output.write("".join(ss).strip() + '\n')
+
+        i = i + 1
+        if (i % 10000 == 0):
+            logger.info("remove words " + str(i) + " articles")
+
+    output.close()
+    logger.info("Finished Saved " + str(i) + " articles in " + outputfile)
+
+Tradition2Simple()
+WordBeark()
+RemoveWord()

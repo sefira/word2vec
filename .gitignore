@@ -83,3 +83,4 @@ xUnitReports
 *.idea
 data/*
 model/*
+*__pycache__*

@@ -31,4 +31,7 @@ This is my word2vec for douban reviews
  
  - Evaluate Word2Vec
    - `python test_word2vec.py ../data/xxx.model`
+
+ - Resume Training
+   - `python resume_train.py -finetune ../model/onlyreview_douban_movie.tsv.processed.simpleCh.wordbreak.removewordsize300window5sg1min_count100negative10iter25.model -train ../data/onlyreview_douban_movie.tsv.processed.simpleCh.wordbreak.removeword`
  

@@ -56,7 +56,7 @@ def RemoveWord():
     for line in input.readlines():
         if(len(line) < 2):
             continue
-        ss = re.findall('[\n\s*\r\u4e00-\u9fa5]', line)
+        ss = re.findall('[\n\s*\r\u4e00-\u9fa5]|nmovie|nrcelebrity', line)
         output.write("".join(ss).strip() + '\n')
 
         i = i + 1
@@ -66,6 +66,19 @@ def RemoveWord():
     output.close()
     logger.info("Finished Saved " + str(i) + " articles in " + outputfile)
 
-Tradition2Simple()
-WordBeark()
-RemoveWord()
+def CountMaxLength():
+    inputfile = path + data + ".removeword"
+    input = open(inputfile, "r")
+    length = 0
+    for line in input.readlines():
+        #line = line.decode("utf-8")
+        line = line.split()
+        length=max(len(line),length)
+    return length
+
+#Tradition2Simple()
+#WordBeark()
+#RemoveWord()
+
+length = CountMaxLength()
+print("Max length of these sentense is " + str(length))

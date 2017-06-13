@@ -21,6 +21,8 @@ This is my word2vec for douban reviews
 
    - RemoveWord
 
+   - Then we maybe cat some files together
+
 ## Train Word2Vec
  - Going to src/ `cd src`
  - Execute train_word2vec.py `python -i train_word2vec.py -size 300 -window 5 -sg 1 -min_count 100 -negative 10 -iter 25 -workers 12`

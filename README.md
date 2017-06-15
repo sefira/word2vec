@@ -13,7 +13,7 @@ This is a word2vec for Chinese douban movie reviews
  - Going to src/ `cd src`
  - Execute process_corpus.py `python -i process_corpus.py`
    - input: review_douban_movie.tsv is a file in which a douban review lays on one line.
-   - output: review_douban_movie.tsv.removeword in which a processed douban review lays on one line. Some dependents should be installed for those process flow.
+   - output: review_douban_movie.tsv.removeword in which a processed douban review lays on one line. Some dependencies should be installed for those process flow.
 
    - Tradition2Simple
      - Install opencc `sudo apt-get install opencc`
@@ -22,6 +22,7 @@ This is a word2vec for Chinese douban movie reviews
      - Install jieba `pip install jieba`
 
    - RemoveWord
+     - TODO: reference [chinese-char-rnn](https://github.com/indiejoseph/chinese-char-rnn/blob/master/utils.py)
 
    - Then we maybe cat some files together if we split corpus into several files, using `cat file1 file2 > file3` or `cat file2 >> file1`
 
@@ -55,7 +56,7 @@ This is a word2vec for Chinese douban movie reviews
  - 进入src文件夹
  - 执行process_corpus.py, `python -i process_corpus.py`
    - 其中输入为review_douban_movie.tsv，每一行有一条豆瓣影评，一共65w行
-   - 输出为review_douban_movie.tsv.removeword，每一行都被繁体转简体、分词、去除标点
+   - 输出为review_douban_movie.tsv.removeword，每一行都被繁体转简体、分词、去除标点。使用之前需要安装依赖项。
    
    - 繁体转简体
      - 安装opencc `sudo apt-get install opencc`
@@ -64,6 +65,7 @@ This is a word2vec for Chinese douban movie reviews
      - 安装jieba `pip install jieba`
 
    - 去除标点
+     - TODO: 可以参考[chinese-char-rnn](https://github.com/indiejoseph/chinese-char-rnn/blob/master/utils.py)改进 
 
    - 如果多个语料文件分开处理，最后我们可以使用Linux的cat将他们连在一起，如 `cat file1 file2 > file3`或`cat file2 >> file1`
 

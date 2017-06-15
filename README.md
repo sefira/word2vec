@@ -43,7 +43,7 @@ This is a word2vec for Chinese douban movie reviews
  - Get the index of a word: model.wv.vocab["word"].index, *i.e.* `model.wv.vocab["apple"].index`
  - Get a word by its index: model.wv.index2word[index], *i.e.* `model.wv.index2word[5585]`
  - Find the most similar word of a given word: model.wv.most_similar("word"), *i.e.* `model.wv.most_similar("apple")`
- - Evaluate a model on analogies: model.wv.accuracy( 'questions-words.txt')
+ - Evaluate a model on analogies: `model.wv.accuracy( 'questions-words.txt')`
 
 ***
 

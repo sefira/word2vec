@@ -39,10 +39,10 @@ This is a word2vec for Chinese douban movie reviews
  - `python -i finetune.py -finetune ../model/review_douban_movie.tsv.removewordsize300window5sg1min_count100negative10iter25.model -train ../data/wv_train.data`
 
 ## Some usages in gensim Word2Vec
- - Get the vector of a word: model.wv["word"], i.e. model.wv["apple"]
- - Get the index of a word: model.wv.vocab["word"].index, i.e. model.wv.vocab["apple"].index
- - Get a word by its index: model.wv.index2word[index], i.e. model.wv.index2word[5585]
- - Find the most similar word of a given word: model.wv.most_similar("word"), i.e. model.wv.most_similar("apple")
+ - Get the vector of a word: model.wv["word"], *i.e.* `model.wv["apple"]`
+ - Get the index of a word: model.wv.vocab["word"].index, *i.e.* `model.wv.vocab["apple"].index`
+ - Get a word by its index: model.wv.index2word[index], *i.e.* `model.wv.index2word[5585]`
+ - Find the most similar word of a given word: model.wv.most_similar("word"), *i.e.* `model.wv.most_similar("apple")`
  - Evaluate a model on analogies: model.wv.accuracy( 'questions-words.txt')
 
 ***
@@ -94,8 +94,8 @@ This is a word2vec for Chinese douban movie reviews
  - `python -i finetune.py -finetune ../model/review_douban_movie.tsv.removewordsize300window5sg1min_count100negative10iter25.model -train ../data/wv_train.data`
 
 ## 一些gensim Word2Vec的使用方法
- - 获取词向量: model.wv["word"], i.e. model.wv["刘德华"]
- - 获取词索引index: model.wv.vocab["word"].index, i.e. model.wv.vocab["张艺谋"].index
- - 通过index获取词: model.wv.index2word[index], i.e. model.wv.index2word[5585]
- - 找一个词最相近的词: model.wv.most_similar("word"), i.e. model.wv.most_similar("周星驰")
- - 四词类推评价: model.wv.accuracy( 'questions-words.txt')
+ - 获取词向量: model.wv["word"], *i.e.* `model.wv["刘德华"]`
+ - 获取词索引index: model.wv.vocab["word"].index, *i.e.* `model.wv.vocab["张艺谋"].index`
+ - 通过index获取词: model.wv.index2word[index], *i.e.* `model.wv.index2word[5585]`
+ - 找一个词最相近的词: model.wv.most_similar("word"), *i.e.* `model.wv.most_similar("周星驰")`
+ - 四词类推评价: `model.wv.accuracy( 'questions-words.txt')`

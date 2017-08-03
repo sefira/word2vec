@@ -13,15 +13,15 @@ from gensim.models.word2vec import LineSentence
 data = "../data/wv_train.data"
 parser = argparse.ArgumentParser()
 parser.add_argument("-train",       type=str, default=data, help="Use text data from file TRAIN to train the model")
-parser.add_argument("-size",        type=int, default=200,  help="Set size of word vectors; default is 100")
+parser.add_argument("-size",        type=int, default=300,  help="Set size of word vectors; default is 100")
 parser.add_argument("-window",      type=int, default=5,    help="Set max skip length WINDOW between words; default is 5")
 parser.add_argument("-sg",          type=int, default=1,    choices=[0, 1], help="By default (sg=0), CBOW is used. Otherwise (sg=1), skip-gram is employed.")
-parser.add_argument("-min_count",   type=int, default=3000, help="This will discard words that appear less than MIN_COUNT times; default is 5")
-parser.add_argument("-negative",    type=int, default=25,   help="Number of negative examples; default is 5, common values are 3 - 10 (0 = not used)")
-parser.add_argument("-workers",     type=int, default=6,    help="Use THREADS threads (default 12)")
+parser.add_argument("-min_count",   type=int, default=100,  help="This will discard words that appear less than MIN_COUNT times; default is 5")
+parser.add_argument("-negative",    type=int, default=10,   help="Number of negative examples; default is 5, common values are 3 - 10 (0 = not used)")
+parser.add_argument("-workers",     type=int, default=12,   help="Use THREADS threads (default 12)")
 parser.add_argument("-sample",      type=float,default=1e-3,help="Set threshold for occurrence of words. Those that appear with higher frequency in the training data will be randomly down-sampled; default is 1e-3, useful range is (0, 1e-5)")
 parser.add_argument("-hs",          type=int, default=0,    choices=[0, 1], help="Use Hierarchical Softmax; default is 0 (not used)")
-parser.add_argument("-iter",        type=int, default=15,   help="Run more training iterations (default 5)")
+parser.add_argument("-iter",        type=int, default=25,   help="Run more training iterations (default 5)")
 args = parser.parse_args()
 
 outputpath = "../model/"

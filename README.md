@@ -33,9 +33,22 @@ This is a word2vec for Chinese douban movie reviews
 ## Evaluate Word2Vec
  - Going to src/ `cd src`
  - Execute test_word2vec.py `python -i test_word2vec.py ../data/xxx.model`
- - questions-words-Zh.txt is a Chinese evaluation file translated from English questions-words.txt using Microsoft Bing Translator API.
+ - questions-words-Zh.txt is a Chinese evaluation file translated from English questions-words.txt using Microsoft Bing Translator API. Some examples:
+
+|a|b|c|d|
+| ------ | ------ | ------ | ------ |
+|写|写作|读|阅读|
+|写|写作|慢|放缓|
+|想|思考|唱|唱歌|
+|大|最大|小|最小|
+|好|最好|高|最高|
+|侄子|侄女|王子|公主|
+|侄子|侄女|儿子|女儿|
+|雅典|希腊|曼谷|泰国|
+|雅典|希腊|北京|中国|
 
 ## Finetune Training
+THIS FUNCTION IS DEPRECATED. It is hard to get word2vec better by Finetune rather than retrain.
  - `python -i finetune.py -finetune ../model/review_douban_movie.tsv.removewordsize300window5sg1min_count100negative10iter25.model -train ../data/wv_train.data`
 
 ## Some usages in gensim Word2Vec
@@ -91,6 +104,7 @@ This is a word2vec for Chinese douban movie reviews
 |雅典|希腊|北京|中国|
 
 ## Finetune训练
+THIS FUNCTION IS DEPRECATED. 使用Finetune并不会取得很好的效果，还不如retrain
  - `python -i finetune.py -finetune ../model/review_douban_movie.tsv.removewordsize300window5sg1min_count100negative10iter25.model -train ../data/wv_train.data`
 
 ## 一些gensim Word2Vec的使用方法
